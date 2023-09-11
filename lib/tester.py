@@ -12,6 +12,8 @@ from common.misc import prepare_logger
 from collections import defaultdict
 import coloredlogs
 
+from mbes_tester import MBESTester
+
 class IndoorTester(Trainer):
     """
     3DMatch tester
@@ -402,5 +404,7 @@ def get_trainer(config):
         return KITTITester(config)
     elif(config.dataset == 'modelnet'):
         return ModelnetTester(config)
+    elif(config.dataset == 'multibeam_npy'):
+        return MBESTester(config)
     else:
         raise NotImplementedError
