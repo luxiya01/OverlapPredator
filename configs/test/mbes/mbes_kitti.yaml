@@ -8,6 +8,7 @@ misc:
   pretrain: 'weights/kitti.pth'
   architecture: kitti
   ransac_n: 4
+  resume_everything: True
 
 model:
   num_layers: 4 
