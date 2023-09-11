@@ -86,7 +86,7 @@ class MBESTester(Trainer):
 
                     ########################################
                     # run ransac 
-                    distance_threshold = self.config.first_subsampling_dl
+                    distance_threshold = self.config.voxel_size * 1.5
                     ts_est = ransac_pose_estimation(src_pcd, tgt_pcd, src_feats, tgt_feats, mutual=False, distance_threshold=distance_threshold, 
                                                     ransac_n=self.config.ransac_n)
                     success = True
