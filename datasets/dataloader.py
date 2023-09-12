@@ -69,6 +69,9 @@ def batch_neighbors_kpconv(queries, supports, q_batches, s_batches, radius, max_
         return torch.from_numpy(neighbors)
     
 def collate_fn_descriptor(list_data, config, neighborhood_limits):
+    list_data = list(filter(lambda x: x is not None, list_data))
+    if len(list_data) == 0:
+        return None
     batched_points_list = []
     batched_features_list = []
     batched_lengths_list = []

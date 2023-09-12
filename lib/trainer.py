@@ -181,6 +181,9 @@ class Trainer(object):
             ##################################
             # load inputs to device.
             inputs = next(c_loader_iter)
+            if inputs is None:
+                print(f'Idx {c_iter} is None! Skipping...')
+                continue
             for k, v in inputs.items():  
                 if type(v) == list:
                     inputs[k] = [item.to(self.device) for item in v]

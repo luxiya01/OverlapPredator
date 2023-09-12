@@ -33,6 +33,9 @@ class MBESTester(Trainer):
 
         with torch.no_grad():
             for i, inputs in tqdm(enumerate(self.loader['test']), total=num_iter):
+                if inputs is None:
+                    print(f'Idx {i} is None! Skipping...')
+                    continue
                 for key in inputs.keys():
                     if isinstance(inputs[key], torch.Tensor):
                         inputs[key] = inputs[key].squeeze(0)
